@@ -20,7 +20,8 @@ RUN yum -y update; \
     rm -f /lib/systemd/system/basic.target.wants/*; \
     rm -f /lib/systemd/system/anaconda.target.wants/*; \
     systemctl enable libvirtd; \
-    systemctl enable virtlockd 
+    systemctl enable virtlockd; \
+    yum clean all
     
 RUN echo "listen_tls = 0" >> /etc/libvirt/libvirtd.conf; \
     echo 'listen_tcp = 1' >> /etc/libvirt/libvirtd.conf; \
