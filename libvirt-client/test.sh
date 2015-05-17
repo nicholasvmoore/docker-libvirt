@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -it --rm libvirt-client $1
+docker run -it --rm libvirt-client "$@"
