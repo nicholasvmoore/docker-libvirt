@@ -5,8 +5,6 @@ ENV container docker
 VOLUME [ "/var/lib/libvirt/" ]
 CMD ["/usr/sbin/init"]
 
-RUN echo 'uri_default = "qemu+tcp://172.17.42.1/system"' >> /etc/libvirt/libvirt.conf
-
 RUN yum -y update ; \
     rpm -e --nodeps fakesystemd & yum -y install systemd; \
     yum -y install virt-viewer virt-install libvirt-client && yum clean all; \
@@ -19,3 +17,5 @@ RUN yum -y update ; \
     rm -f /lib/systemd/system/basic.target.wants/*; \
     rm -f /lib/systemd/system/anaconda.target.wants/*; \
     yum clean all
+
+RUN echo 'uri_default = "qemu+tcp://172.17.42.1/system"' >> /etc/libvirt/libvirt.conf
