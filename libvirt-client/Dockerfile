@@ -7,7 +7,7 @@ CMD ["/usr/sbin/init"]
 
 RUN yum -y update ; \
     rpm -e --nodeps fakesystemd & yum -y install systemd; \
-    yum -y install virt-viewer virt-install libvirt-client && yum clean all; \
+    yum -y install pygobject3 virt-viewer virt-install libvirt-client && yum clean all; \
     (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
     rm -f /lib/systemd/system/multi-user.target.wants/*; \
     rm -f /etc/systemd/system/*.wants/*; \
