@@ -9,12 +9,13 @@ Requires=mnt-usb0-libvirt.mount
 [Service]
 TimeoutStartSec=0
 Restart=always
-StandardInput=tty-force
 ExecStartPre=-/usr/bin/docker stop libvirtd
 ExecStartPre=-/usr/bin/docker rm -f libvirtd
-ExecStart=/usr/bin/docker run --name libvirtd --privileged --net=host -ti -e 'container=docker' \
+ExecStart=/bin/sh -c '/usr/bin/docker run --name libvirtd --privileged --net=host -i -e \'container=docker\' \
 -v /proc/modules:/proc/modules -v /mnt/usb0/libvirt/:/var/lib/libvirt/ \
--v /sys/fs/cgroup:/sys/fs/cgroup:rw libvirtd
+-v /mnt/lun0/:/mnt/lun0 \
+-p 5900:5900 \
+-v /sys/fs/cgroup:/sys/fs/cgroup:rw libvirtd'
 ExecStop=/usr/bin/docker stop libvirtd
 
 [Install]
