@@ -1,0 +1,13 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit host-bridge
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>host-bridge</name>
+  <uuid>692379ee-52bb-4a13-93f0-41e1fdaed81d</uuid>
+  <forward mode='bridge'/>
+  <bridge name='br0'/>
+</network>
