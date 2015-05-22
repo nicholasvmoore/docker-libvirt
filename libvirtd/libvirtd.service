@@ -14,7 +14,7 @@ ExecStartPre=-/usr/bin/docker rm -f libvirtd
 ExecStart=/bin/sh -c '/usr/bin/docker run --name libvirtd --privileged --net=host -i -e \'container=docker\' \
 -v /proc/modules:/proc/modules -v /mnt/usb0/libvirt/:/var/lib/libvirt/ \
 -v /mnt/lun0/software:/mnt/lun0/software \
--v /mnt/lun0/software/docker/libvirtd:/etc/libvirtd
+-v /mnt/lun0/software/docker/libvirtd:/etc/libvirtd \
 -p 5900:5900 \
 -v /sys/fs/cgroup:/sys/fs/cgroup:rw libvirtd'
 ExecStop=/usr/bin/docker stop libvirtd
